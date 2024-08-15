@@ -20,7 +20,7 @@ jobs:
           | wget -qi - \
           && chmod +x jinxp \
           && ./jinxp -i scripts/scripts
-          cp /home/runner/work/testjinx/testjinx/dist/*     /home/runner/work/testjinx/testjinx/docs/
+          cp -r /home/runner/work/testjinx/testjinx/dist/*     /home/runner/work/testjinx/testjinx/docs/
           git config --global user.email "action@github.com"
           git config --global user.name "github-actions"
           git add docs
