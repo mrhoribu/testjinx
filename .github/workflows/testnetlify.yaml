@@ -1,1 +1,19 @@
+name: Netlify thing
+on:
+  workflow_dispatch:
 
+jobs:
+  run-jinxp:
+    runs-on: ubuntu-latest
+    name: Jinxp download & run
+    timeout-minutes: 5
+    steps:
+      - name: Copy gameobj-data.xml and scripts for EO-Lich5
+        run: |
+          curl -s https://api.github.com/repos/elanthia-online/jinxp/releases/latest \
+          | grep browser_download_url \
+          | grep jinxp \
+          | cut -d '"' -f 4 \
+          | wget -qi - \
+          && chmod +x jinxp \
+          && ./jinxp -i lib
