@@ -8,10 +8,12 @@ jobs:
     name: Jinxp download & run
     timeout-minutes: 5
     steps:
+      - name: Checkout EO-Scripts
+        uses: actions/checkout@v4
       - name: Copy gameobj-data.xml and scripts for EO-Lich5
         run: |
+          pwd
           git clone https://github.com/elanthia-online/scripts.git
-          ls -lha
           curl -s https://api.github.com/repos/elanthia-online/jinxp/releases/latest \
           | grep browser_download_url \
           | grep jinxp \
