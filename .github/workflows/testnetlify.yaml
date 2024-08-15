@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Copy gameobj-data.xml and scripts for EO-Lich5
         run: |
-          pwd
           git clone https://github.com/elanthia-online/scripts.git
           curl -s https://api.github.com/repos/elanthia-online/jinxp/releases/latest \
           | grep browser_download_url \
@@ -21,4 +20,9 @@ jobs:
           | wget -qi - \
           && chmod +x jinxp \
           && ./jinxp -i scripts/scripts
-          ls dist -lha
+          cp /home/runner/work/testjinx/testjinx/dist/*     /home/runner/work/testjinx/testjinx/docs/
+          git config --global user.email "action@github.com"
+          git config --global user.name "github-actions"
+          git add docs
+          git commit -m "Automatic publish"
+          git push
