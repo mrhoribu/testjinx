@@ -19,4 +19,4 @@ jobs:
           | wget -qi - \
           && chmod +x jinxp \
           && ./jinxp -i scripts/scripts
-          ls -lha
+          ls dist -lha
